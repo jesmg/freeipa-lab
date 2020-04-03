@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    ipaserver: master.jesusmg.internal
+    ipadm_password: freeipa.dm
+    ipaadmin_password: freeipa.admin
+    ipaserver_setup_kra: yes
+
+  pre_tasks:
+    - name: "Set virtual machine hostname"
+      hostname:
+        name: "{{ ipaserver }}"
+    - name: "Create installation log file with insecure permissions due to a bug"
+      file:
+        path: /var/log/ipaserver-install.log
+        owner: root
+        group: root
+        mode: '0666'
+        state: touch
+
+  roles:
+    - role: ipaserver
+      state: present
