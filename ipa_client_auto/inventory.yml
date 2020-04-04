@@ -1,0 +1,5 @@
+[ipaservers]
+master.jesusmg.internal
+
+[ipa_client_auto]
+127.0.0.1

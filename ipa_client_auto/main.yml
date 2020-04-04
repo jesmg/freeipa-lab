@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- hosts: ipa_client_auto
+  connection: local
   become: yes
   vars:
     ipaclients: clientauto.jesusmg.internal
@@ -11,6 +12,18 @@
     - name: "Set virtual machine hostname"
       hostname:
         name: "{{ ipaclients }}"
+    - name: "Set master address in /etc/hosts"
+      lineinfile:
+        path: /etc/hosts
+        line: 192.168.50.2 master.jesusmg.internal
+        create: yes
+    - name: "Create client log file with insecure permissions due to a bug"
+      file:
+        path: /var/log/ipaclient-install.log
+        owner: root
+        group: root
+        mode: '0666'
+        state: touch
 
   roles:
     - role: ipaclient
