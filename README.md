@@ -12,7 +12,7 @@ This repository contains three Vagrant files corresponding to three virtual mach
 
 ## How to use it?
 
-In Fedora:
+Follow the steps below (tested in Fedora 31):
 1. Install libvirt and the @virtualization group: `sudo dnf install @virtualization libvirt`
 2. Install vagrant and vagrant-libvirt: `sudo dnf install vagrant vagrant-libvirt`
 3. Set the Vagrant default provider: `export VAGRANT_DEFAULT_PROVIDER=libvirt`
