@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: "Set virtual machine hostname"
+      hostname:
+        name: "clientmanual.jesusmg.internal"
+    - name: "Ensure ipa-client package is installed"
+      package:
+        name: ipa-client
+        state: present
