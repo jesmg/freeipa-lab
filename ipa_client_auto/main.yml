@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    ipaclients: clientauto.jesusmg.internal
+    ipaclient_domain: jesusmg.internal
+    ipaadmin_principal: admin
+    ipaadmin_password: freeipa.admin
+
+  pre_tasks:
+    - name: "Set virtual machine hostname"
+      hostname:
+        name: "{{ ipaclients }}"
+
+  roles:
+    - role: ipaclient
+      state: present
