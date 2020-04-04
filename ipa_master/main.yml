@@ -20,6 +20,13 @@
         group: root
         mode: '0666'
         state: touch
+    - name: "Create client log file with insecure permissions due to a bug"
+      file:
+        path: /var/log/ipaclient-install.log
+        owner: root
+        group: root
+        mode: '0666'
+        state: touch
 
   roles:
     - role: ipaserver
