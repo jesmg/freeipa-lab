@@ -5,6 +5,8 @@
     ipaserver: master.jesusmg.internal
     ipadm_password: freeipa.dm
     ipaadmin_password: freeipa.admin
+    ipaserver_domain: jesusmg.internal
+    ipaserver_realm: JESUSMG.INTERNAL
     ipaserver_setup_kra: yes
 
   pre_tasks:
