@@ -6,6 +6,11 @@
     - name: "Set virtual machine hostname"
       hostname:
         name: "clientmanual.jesusmg.internal"
+    - name: "Set master address in /etc/hosts"
+      lineinfile:
+        path: /etc/hosts
+        line: 192.168.50.2 master.jesusmg.internal
+        create: yes
     - name: "Ensure ipa-client package is installed"
       package:
         name: ipa-client
